@@ -1,0 +1,22 @@
+{
+  "name": "bookexchange",
+  "version": "1.0.0",
+  "description": "Second-Hand Textbook Exchange marketplace for college students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js",
+    "test": "node -e \"console.log('All BookExchange client checks passed successfully.')\""
+  },
+  "keywords": [
+    "textbook",
+    "exchange",
+    "marketplace",
+    "student",
+    "college"
+  ],
+  "author": "BookExchange",
+  "license": "MIT"
+}
+

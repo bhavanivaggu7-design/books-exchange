@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookExchange - College Second-Hand Textbook Marketplace</title>
+  <meta name="description" content="BookExchange is a safe, simple, and affordable second-hand textbook exchange platform for college students. Buy, sell, and compare pre-loved textbooks on campus.">
+  
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Top Navigation Bar
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" id="brand-logo" aria-label="BookExchange Home">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <path d="m9 9 3-3 3 3"></path>
+            <path d="M12 6v8"></path>
+          </svg>
+        </div>
+        <span>Book<span>Exchange</span></span>
+      </a>
+
+      <!-- Navigation Links (Pages) -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active" data-page="home">Home</a>
+        <a href="#search" class="nav-link" data-page="search">Search Textbooks</a>
+        <a href="#compare" class="nav-link" data-page="compare">
+          Compare Books
+          <span class="compare-badge" id="nav-compare-count">0</span>
+        </a>
+        <a href="#contact" class="nav-link" data-page="contact">Safe Contact</a>
+        <a href="#sell" class="nav-link" data-page="sell">Sell a Book</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="#search" class="nav-search-btn" title="Quick Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <a href="#sell" class="btn-primary nav-post-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Post a Book
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Main Content Area - Dynamic Page Views
+       ======================================================================== -->
+  <main id="main-content">
+
+    <!-- PAGE 1: HOME PAGE -->
+    <section class="page-view active" id="view-home">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="container">
+          <div class="hero-badge-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            Student-to-Student Campus Marketplace
+          </div>
+
+          <h1 class="hero-title">
+            Buy & Sell College Textbooks <span>Without Middleman Fees</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            BookExchange connects students within the campus community to buy and sell pre-loved course textbooks at fair, budget-friendly prices.
+          </p>
+
+          <!-- Hero Search Box -->
+          <div class="hero-search-wrapper">
+            <div class="hero-search-bar">
+              <svg class="hero-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                class="hero-search-input" 
+                id="hero-quick-search-input" 
+                placeholder="Search by title, author, or subject (e.g. DBMS, Algorithms, OS, Math)..." 
+                aria-label="Search textbooks"
+              >
+              <button type="button" class="hero-search-btn" id="hero-quick-search-btn">
+                Find Books
+              </button>
+            </div>
+          </div>
+
+          <!-- Hero Action CTAs -->
+          <div class="hero-cta-buttons">
+            <a href="#search" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Browse All Books
+            </a>
+            <a href="#sell" class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              Sell Your Textbook
+            </a>
+          </div>
+
+          <!-- Campus Trust & Stats Bar -->
+          <div class="campus-stats-bar">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-title">100% Student Verified</div>
+                <div class="stat-desc">Connect directly with peers on campus</div>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-title">Save Up To 70%</div>
+                <div class="stat-desc">Affordable second-hand prices in ₹</div>
+              </div>
+            </div>
+
+            <div class="stat-item">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div>
+                <div class="stat-title">Handover in Person</div>
+                <div class="stat-desc">Zero shipping delays or package damage</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Subject Category Pills -->
+      <section class="container" style="margin-top: 1.5rem; margin-bottom: 2.5rem;">
+        <div class="category-pills-row" id="quick-category-pills">
+          <!-- Dynamically populated or static pills -->
+          <button class="category-pill active" onclick="filterByCategory('All')">All Subjects</button>
+          <button class="category-pill" onclick="filterByCategory('DBMS')">DBMS</button>
+          <button class="category-pill" onclick="filterByCategory('Java')">Java</button>
+          <button class="category-pill" onclick="filterByCategory('Algorithms')">Algorithms (CLRS)</button>
+          <button class="category-pill" onclick="filterByCategory('Operating Systems')">Operating Systems</button>
+          <button class="category-pill" onclick="filterByCategory('Networks')">Networks</button>
+          <button class="category-pill" onclick="filterByCategory('Mathematics')">Engineering Math</button>
+        </div>
+      </section>
+
+      <!-- Featured Textbooks Section -->
+      <section class="featured-section">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-title-wrap">
+              <span class="section-tag">Curated Deals</span>
+              <h2 class="section-title">Featured Campus Listings</h2>
+              <p class="section-subtitle">Top verified textbook listings with substantial student discounts.</p>
+            </div>
+            <a href="#search" class="btn-secondary" style="font-size:0.85rem; padding: 0.5rem 1rem;">
+              View All Listings &rarr;
+            </a>
+          </div>
+
+          <div class="books-grid" id="featured-books-grid">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section -->
+      <section class="about-section">
+        <div class="container">
+          <div class="section-head" style="text-align: center; justify-content: center;">
+            <div class="section-title-wrap" style="text-align: center;">
+              <span class="section-tag">How It Works</span>
+              <h2 class="section-title">Exchange Books in 3 Simple Steps</h2>
+              <p class="section-subtitle">No complicated setups. Fast, direct, student-to-student transactions.</p>
+            </div>
+          </div>
+
+          <div class="how-it-works-grid">
+            <div class="step-card">
+              <div class="step-number">01</div>
+              <div class="step-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </div>
+              <h3 class="step-title">List or Search</h3>
+              <p class="step-desc">
+                Post your completed semester textbooks in 60 seconds with condition notes and price, or search for required course books.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">02</div>
+              <div class="step-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <h3 class="step-title">Safe Peer Contact</h3>
+              <p class="step-desc">
+                Use our safe enquiry channel to coordinate a meeting time without exposing personal phone numbers or spam.
+              </p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">03</div>
+              <div class="step-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3 class="step-title">Meet & Inspect</h3>
+              <p class="step-desc">
+                Meet at familiar campus spots like the Central Library, inspect the book's physical pages and binding, and exchange directly.
+              </p>
+            </div>
+          </div>
+
+          <!-- Safe Meetup Banner -->
+          <div class="safety-banner">
+            <div class="safety-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div>
+              <h4 class="safety-title">BookExchange Campus Safety Promise</h4>
+              <p class="safety-text">
+                Always meet in open, well-lit campus zones like the college canteen or reading rooms. Never transfer money beforehand to prevent scams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- PAGE 2: SEARCH TEXTBOOKS PAGE -->
+    <section class="page-view" id="view-search">
+      <div class="container marketplace-section" style="padding-top: 2rem;">
+        <!-- Page Title & Quick Breadcrumb -->
+        <div class="page-title-header">
+          <div>
+            <h1 class="page-main-heading">Find Textbooks</h1>
+            <p class="page-subheading">Search by course, title, or author. Filter by condition and price.</p>
+          </div>
+          <a href="#sell" class="btn-primary" style="font-size:0.88rem; padding: 0.6rem 1.1rem;">
+            + Sell a Book
+          </a>
+        </div>
+
+        <div class="marketplace-layout">
+          <!-- Sidebar: Filter Controls -->
+          <aside class="filters-sidebar" aria-label="Filters">
+            <div class="filters-header">
+              <h3 class="filters-heading">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                </svg>
+                Filters
+              </h3>
+              <button type="button" class="btn-clear-filters" id="btn-clear-filters" title="Reset all filters">
+                Clear All
+              </button>
+            </div>
+
+            <!-- Keyword Search in Sidebar -->
+            <div class="filter-group">
+              <label class="filter-label" for="search-input-field">Keyword Search</label>
+              <div style="position:relative;">
+                <input 
+                  type="text" 
+                  id="search-input-field" 
+                  class="filter-input" 
+                  placeholder="e.g. DBMS, Korth, Java..."
+                >
+              </div>
+            </div>
+
+            <!-- Subject Filter -->
+            <div class="filter-group">
+              <label class="filter-label" for="filter-subject">Subject / Department</label>
+              <select id="filter-subject" class="filter-select">
+                <option value="All">All Subjects</option>
+              </select>
+            </div>
+
+            <!-- Condition Filter -->
+            <div class="filter-group">
+              <label class="filter-label">Book Condition</label>
+              <div class="condition-pills">
+                <label class="condition-pill-label active">
+                  <span>
+                    <input type="radio" name="filter-condition" value="All" checked>
+                    All Conditions
+                  </span>
+                </label>
+                <label class="condition-pill-label">
+                  <span>
+                    <input type="radio" name="filter-condition" value="Like New">
+                    Like New
+                  </span>
+                  <span class="condition-badge badge-like-new" style="font-size:0.65rem;">Pristine</span>
+                </label>
+                <label class="condition-pill-label">
+                  <span>
+                    <input type="radio" name="filter-condition" value="Good">
+                    Good
+                  </span>
+                  <span class="condition-badge badge-good" style="font-size:0.65rem;">Clean</span>
+                </label>
+                <label class="condition-pill-label">
+                  <span>
+                    <input type="radio" name="filter-condition" value="Acceptable">
+                    Acceptable
+                  </span>
+                  <span class="condition-badge badge-acceptable" style="font-size:0.65rem;">Budget</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Max Price Filter Range Slider -->
+            <div class="filter-group">
+              <label class="filter-label" for="filter-price-slider">Maximum Price</label>
+              <div class="price-range-wrapper">
+                <div class="price-range-display">
+                  <span>₹0</span>
+                  <span class="price-current-value" id="filter-price-display">₹2,000</span>
+                </div>
+                <input 
+                  type="range" 
+                  id="filter-price-slider" 
+                  class="price-slider" 
+                  min="100" 
+                  max="2000" 
+                  step="50" 
+                  value="2000"
+                >
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Listing Results -->
+          <div class="marketplace-content">
+            <!-- Results Toolbar -->
+            <div class="marketplace-toolbar">
+              <div class="results-count">
+                Showing <strong id="results-count-number">0</strong> textbooks available
+              </div>
+
+              <div class="sort-wrapper">
+                <label for="sort-books" class="sort-label">Sort by:</label>
+                <select id="sort-books" class="sort-select">
+                  <option value="featured">Featured Picks</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="newest">Recently Listed</option>
+                  <option value="title">Title (A - Z)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Books Grid -->
+            <div class="books-grid" id="all-books-grid">
+              <!-- Dynamically rendered book cards -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3 & 4: BOOK DETAILS PAGE -->
+    <section class="page-view" id="view-details">
+      <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+        <!-- Back Navigation -->
+        <div style="margin-bottom: 1.5rem;">
+          <a href="#search" class="back-link-btn" id="details-back-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Book Listings
+          </a>
+        </div>
+
+        <!-- Book Details Container -->
+        <div class="book-details-full-container" id="book-details-full-container">
+          <!-- Populated via JavaScript dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: CONTACT SELLER PAGE (Safe Messaging) -->
+    <section class="page-view" id="view-contact">
+      <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem; max-width: 860px;">
+        <!-- Header -->
+        <div style="margin-bottom: 1.5rem;">
+          <a href="#search" class="back-link-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to Catalog
+          </a>
+        </div>
+
+        <div class="safe-contact-card">
+          <div class="safe-contact-header">
+            <div>
+              <span class="section-tag" style="color:var(--primary-blue);">Safe Campus Messaging</span>
+              <h1 class="page-main-heading" style="font-size: 1.7rem;">Contact Book Seller</h1>
+              <p class="page-subheading">Send a private inquiry to arrange an on-campus handover.</p>
+            </div>
+            <div class="shield-badge">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              Encrypted Peer Relay
+            </div>
+          </div>
+
+          <!-- Target Book Context Banner -->
+          <div class="contact-target-book-banner" id="contact-page-target-banner">
+            <div class="target-book-thumb" id="contact-page-thumb">
+              📚
+            </div>
+            <div style="flex:1;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:2px;">
+                <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Textbook Inquiry for</div>
+                <div style="display:flex; align-items:center; gap:0.35rem;">
+                  <span style="font-size:0.75rem; color:var(--text-muted);">Switch:</span>
+                  <select id="contact-book-select" style="font-size:0.75rem; padding:3px 8px; border-radius:6px; border:1px solid var(--border-medium); background:#fff; outline:none; max-width:220px;" aria-label="Select textbook to inquire about"></select>
+                </div>
+              </div>
+              <h3 id="contact-page-book-title" style="font-size:1.1rem; color:var(--text-primary); font-weight:700;">Database System Concepts</h3>
+              <p style="font-size:0.85rem; color:var(--text-secondary);">
+                Seller: <strong id="contact-page-seller-name">Aarav Sharma</strong> | Asking Price: <strong id="contact-page-price" style="color:var(--primary-blue-dark);">₹490</strong>
+              </p>
+            </div>
+          </div>
+
+          <!-- Safety & Privacy Notice -->
+          <div class="demo-notice-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div>
+              <strong>Campus Privacy & Prototype Demonstration Notice:</strong>
+              <div style="margin-top:2px;">
+                Personal phone numbers and student email addresses are <strong>never shown publicly</strong>. When you send an enquiry, the seller receives a notification via campus relay. As this is a frontend prototype, messaging interactions are demonstrated client-side without sending messages to external phone numbers.
+              </div>
+            </div>
+          </div>
+
+          <!-- Success Alert Container -->
+          <div class="success-message-box" id="contact-page-success-box">
+            <!-- Populated on submit -->
+          </div>
+
+          <!-- The Safe Contact Form -->
+          <form id="contact-page-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-page-buyer-name" class="form-label">
+                  Your Full Name <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-page-buyer-name" 
+                  class="form-input" 
+                  placeholder="e.g. Priya Nair" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-page-buyer-id" class="form-label">
+                  College ID / Department
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-page-buyer-id" 
+                  class="form-input" 
+                  placeholder="e.g. CSE, Year 2"
+                >
+                <div class="form-helper">Helps seller recognize fellow branch peers.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-page-message" class="form-label">
+                Message to Seller <span class="required">*</span>
+              </label>
+              <textarea 
+                id="contact-page-message" 
+                class="form-textarea" 
+                rows="4" 
+                placeholder="Ask about meeting location, book condition, or confirm availability..." 
+                required
+              ></textarea>
+              <div class="form-error"></div>
+              <div class="form-helper">Tip: Suggest meeting at Central Library or Campus Student Center.</div>
+            </div>
+
+            <!-- Meetup Location Suggestions -->
+            <div style="margin-bottom:1.5rem; background:var(--bg-lavender-subtle); padding:0.85rem 1rem; border-radius:var(--radius-md); border:1px solid var(--border-light);">
+              <span style="font-size:0.8rem; font-weight:700; color:var(--text-primary); display:block; margin-bottom:0.35rem;">
+                📍 Common Safe Meetup Spots:
+              </span>
+              <div class="location-chips">
+                <button type="button" class="location-chip" onclick="appendLocation('Central Library Ground Floor')">Central Library</button>
+                <button type="button" class="location-chip" onclick="appendLocation('Main Student Cafeteria')">Student Cafeteria</button>
+                <button type="button" class="location-chip" onclick="appendLocation('Tech Block Quadrangle')">Tech Block</button>
+                <button type="button" class="location-chip" onclick="appendLocation('Campus Reading Room')">Reading Room</button>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+              <a href="#search" class="btn-secondary">Cancel</a>
+              <button type="submit" class="btn-primary" id="btn-page-send-enquiry">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                Send Safe Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: COMPARE BOOKS PAGE -->
+    <section class="page-view" id="view-compare">
+      <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem;">
+        <div class="page-title-header">
+          <div>
+            <h1 class="page-main-heading">Compare Textbooks</h1>
+            <p class="page-subheading">Compare two textbook listings side-by-side to make the best value choice.</p>
+          </div>
+          <div style="display:flex; gap:0.6rem;">
+            <button type="button" class="btn-secondary" onclick="clearComparison()">
+              Clear Selection
+            </button>
+            <a href="#search" class="btn-primary">
+              + Add More Books
+            </a>
+          </div>
+        </div>
+
+        <div class="compare-page-card" id="compare-page-content">
+          <!-- Populated via JavaScript dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7: SELL A BOOK PAGE -->
+    <section class="page-view" id="view-sell">
+      <div class="container" style="padding-top: 2.5rem; padding-bottom: 4rem; max-width: 820px;">
+        <div class="safe-contact-card">
+          <div class="safe-contact-header">
+            <div>
+              <span class="section-tag" style="color:var(--primary-blue);">List on Campus</span>
+              <h1 class="page-main-heading" style="font-size: 1.7rem;">Sell a Textbook</h1>
+              <p class="page-subheading">Give your finished course textbooks a second life and earn back cash.</p>
+            </div>
+          </div>
+
+          <!-- Persistence Info Notice -->
+          <div class="demo-notice-box" style="background:#f0f9ff; border-color:#bae6fd;">
+            <svg style="color:#0284c7;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 3 7 8 15 8"></polyline>
+            </svg>
+            <div>
+              <strong style="color:#0369a1;">Browser LocalStorage Persistence:</strong>
+              <div style="color:#0c4a6e; margin-top:2px;">
+                Your newly submitted book listings are automatically saved to your browser's LocalStorage. They will instantly appear in the live search, filters, and featured catalog!
+              </div>
+            </div>
+          </div>
+
+          <!-- Sell Book Form -->
+          <form id="page-sell-book-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sell-title" class="form-label">
+                  Textbook Title <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="sell-title" 
+                  class="form-input" 
+                  placeholder="e.g. Database System Concepts" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-author" class="form-label">
+                  Author(s) <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="sell-author" 
+                  class="form-input" 
+                  placeholder="e.g. Silberschatz, Korth, Sudarshan" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sell-edition" class="form-label">
+                  Edition <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="sell-edition" 
+                  class="form-input" 
+                  placeholder="e.g. 7th Edition" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-subject" class="form-label">
+                  Subject / Category <span class="required">*</span>
+                </label>
+                <select id="sell-subject" class="form-select" required>
+                  <option value="">Select subject category</option>
+                </select>
+                <div class="form-error"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sell-condition" class="form-label">
+                  Condition <span class="required">*</span>
+                </label>
+                <select id="sell-condition" class="form-select" required>
+                  <option value="">Select condition</option>
+                  <option value="Like New">Like New (Spotless, no marks)</option>
+                  <option value="Good">Good (Minor highlights, sturdy spine)</option>
+                  <option value="Acceptable">Acceptable (Worn, fully legible)</option>
+                </select>
+                <div class="form-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="sell-price" class="form-label">
+                  Your Asking Price (₹) <span class="required">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="sell-price" 
+                  class="form-input" 
+                  placeholder="e.g. 450" 
+                  min="1" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sell-original-price" class="form-label">
+                  Original MRP (₹) <span class="form-helper" style="display:inline;">(Optional)</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="sell-original-price" 
+                  class="form-input" 
+                  placeholder="e.g. 1150 (shows student discount %)" 
+                  min="1"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="sell-seller-name" class="form-label">
+                  Your Display Name <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="sell-seller-name" 
+                  class="form-input" 
+                  placeholder="e.g. Rohan V. (CSE 3rd Year)" 
+                  required
+                >
+                <div class="form-error"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sell-cover-url" class="form-label">
+                Cover Image URL <span class="form-helper" style="display:inline;">(Optional)</span>
+              </label>
+              <input 
+                type="url" 
+                id="sell-cover-url" 
+                class="form-input" 
+                placeholder="https://... (Leave blank to use modern stylized cover)"
+              >
+              <div class="form-helper">If left empty, BookExchange will auto-generate a handsome hardcover styling.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="sell-description" class="form-label">
+                Physical Condition Notes <span class="required">*</span>
+              </label>
+              <textarea 
+                id="sell-description" 
+                class="form-textarea" 
+                rows="3" 
+                placeholder="Mention page conditions, pencil annotations, included CDs, or binding firmness..." 
+                required
+              ></textarea>
+              <div class="form-error"></div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1.5rem;">
+              <button type="reset" class="btn-secondary">Reset Form</button>
+              <button type="submit" class="btn-primary" id="btn-submit-sell">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Publish Book Listing
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Floating Comparison Bar (Appears when 1 or 2 books are selected)
+       ======================================================================== -->
+  <aside class="compare-bar-container" id="compare-floating-bar" aria-label="Book comparison bar">
+    <div class="compare-bar-info">
+      <span class="compare-bar-badge" id="bar-compare-count">0/2</span>
+      <span class="compare-bar-text" id="bar-compare-text">Select books to compare</span>
+    </div>
+    <div class="compare-bar-actions">
+      <a href="#compare" class="btn-open-compare" id="bar-compare-btn">
+        Compare Now
+      </a>
+      <button type="button" class="btn-clear-compare" id="bar-clear-compare" title="Clear comparison selection">
+        &times; Clear
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       Toast Notification Container
+       ======================================================================== -->
+  <div class="toast-container" id="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color:#fff;">
+            <div class="brand-logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </div>
+            <span>Book<span style="color:#93c5fd;">Exchange</span></span>
+          </div>
+          <p class="footer-desc">
+            The student-first marketplace for affordable, pre-loved course textbooks. Save money, reduce paper waste, and connect with peers across your college campus.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#search">Search Textbooks</a></li>
+            <li><a href="#compare">Compare Books</a></li>
+            <li><a href="#contact">Safe Contact</a></li>
+            <li><a href="#sell">Sell a Book</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Popular Subjects</h4>
+          <ul class="footer-links">
+            <li><a href="#search" onclick="filterByCategory('DBMS')">DBMS</a></li>
+            <li><a href="#search" onclick="filterByCategory('Java')">Java Programming</a></li>
+            <li><a href="#search" onclick="filterByCategory('Algorithms')">Data Structures (DSA)</a></li>
+            <li><a href="#search" onclick="filterByCategory('Operating Systems')">Operating Systems</a></li>
+            <li><a href="#search" onclick="filterByCategory('Mathematics')">Engineering Math</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Campus Safety</h4>
+          <div class="footer-demo-badge">
+            <strong>🛡️ Student Safety Tip:</strong>
+            Arrange meetups in open college public areas like the library or canteen. Never wire advance funds.
+          </div>
+          <div class="footer-demo-badge" style="margin-top:0.75rem;">
+            <strong>Demo Prototype Notice:</strong>
+            Built with HTML5, CSS3, &amp; Vanilla JavaScript. Client-side prototype with LocalStorage persistence.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong>BookExchange</strong>. Designed for college students.
+        </div>
+        <div class="footer-privacy-note">
+          Student Privacy: Personal phone numbers &amp; emails are never displayed publicly.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
